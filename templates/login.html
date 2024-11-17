@@ -1,21 +1,174 @@
-<!-- templates/login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Student Survey</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f3e8fd; /* Light purple background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background-color: white;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Header Styling */
+    .form-header {
+      background-color: #673ab7; /* Deep purple header */
+      color: white;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .form-header h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .form-header p {
+      font-size: 14px;
+      margin-top: 8px;
+      color: #e0d4fc;
+    }
+
+    /* Form Body Styling */
+    .form-body {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      margin-bottom: 8px;
+    }
+
+    .required {
+      color: #d93025;
+      margin-left: 3px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      background-color: #f8f9fa;
+    }
+
+    textarea {
+      height: 80px;
+      resize: none;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border: 1px solid #673ab7;
+    }
+
+    /* Submit Button Styling */
+    .form-footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #673ab7;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #5e35b1;
+    }
+
+    /* Footer Disclaimer */
+    .disclaimer {
+      text-align: center;
+      font-size: 12px;
+      color: #5f6368;
+      margin-top: 10px;
+    }
+
+    .disclaimer a {
+      color: #673ab7;
+      text-decoration: none;
+    }
+
+    .disclaimer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="{{ url_for('login') }}" method="POST">
-        <label for="account">Account:</label>
-        <input type="text" id="account" name="account" required><br><br>
+  <div class="form-container">
+    <!-- Form Header -->
+    <div class="form-header">
+      <h1>University Student Survey</h1>
+      <p>All fields marked with <span class="required">*</span> are required.</p>
+    </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <!-- Form Body -->
+    <div class="form-body">
+      <form action="/submit-survey" method="POST">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Full Name<span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Your answer" required>
+        </div>
 
-        <input type="submit" value="Login">
-    </form>
+        <!-- Class -->
+        <div class="form-group">
+          <label for="class">Class<span class="required">*</span></label>
+          <input type="text" id="class" name="class" placeholder="Your answer" required>
+        </div>
+
+        <!-- Hobby -->
+        <div class="form-group">
+          <label for="hobby">Hobby<span class="required">*</span></label>
+          <textarea id="hobby" name="hobby" placeholder="Your answer" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-footer">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      Never submit sensitive information through this form. <br>
+      This form is not affiliated with Google.
+    </div>
+  </div>
 </body>
 </html>
